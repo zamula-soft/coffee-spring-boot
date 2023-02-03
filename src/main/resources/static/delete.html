@@ -1,0 +1,16 @@
+<script type="text/javascript">
+    function test()
+    {
+        var url = "/coffees/" + document.getElementById("id").value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("DELETE", url, true);
+        xhr.send(null);
+        window.alert("url is: " + url);
+    }
+</script>
+
+<form name="my_form">
+    Input UUID: <br>
+    <input type="text" id="id" name="id">
+</form>
+<button type="button" onclick="test();">Delete1111</button>

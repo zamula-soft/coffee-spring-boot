@@ -1,0 +1,24 @@
+<script type="text/javascript">
+    function test()
+    {
+        var url = "/coffees";
+
+        var coffee = {};
+        coffee.id = document.getElementById("id").value;
+        coffee.name = document.getElementById("name").value;
+        var json = JSON.stringify(coffee);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", url, true);
+        xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        xhr.send(json);
+        window.alert("url is: " + url);
+    }
+</script>
+
+<form name="my_form">
+    Input UUID: <br>
+    <input type="text" id="id" name="id"><br>
+    <input type="text" id="name" name="name"><br>
+</form>
+<button type="button" onclick="test();">Create</button>
