@@ -1,0 +1,10 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<form action="#" th:action="@{/coffees}" th:object="${coffee}" method="post">
+    <label for="name">Name</label>
+    <br/>
+    <input type="text" th:field="*{name}" id="name" placeholder="Name">
+    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+    <br/>
+    <input type="submit" value="Add Coffee">
+</form>

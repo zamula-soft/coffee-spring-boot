@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:switch="${coffees}">
+    <h2 th:case="null">No coffees yet!</h2>
+    <div th:case="*">
+        <h2>Coffees</h2>
+        <table border="1">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="coffee : ${coffees}">
+                <td th:text="${coffee.id}"></td>
+                <td th:text="${coffee.name}"></td>
+                <td><a th:href="@{/coffees/edit/{id}(id=${coffee.id})}">Edit</a></td>
+                <td><a th:href="@{/coffees/delete/{id}(id=${coffee.id})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <hr/>
+    <p><a href="/coffees/add">Add a new coffee</a></p>
+
+    <form action="/coffees/search" method="get">
+        <input type="text" id="name" name="name"/>
+        <input type="submit" value="Search a Coffees"/>
+    </form>
+
+</div>

@@ -3,6 +3,7 @@ package com.example.coffee;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 
 import java.util.UUID;
 
@@ -10,12 +11,17 @@ import java.util.UUID;
 @Table(name="coffee_table")
 public class Coffee {
     @Id //primary key
-    private final String id;
+    private String id;
+    @NotBlank(message = "Name is mandatory")
     private String name;
 
     public Coffee() // for JPA we need default constructor
     {
         this("");
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Coffee(String id, String name) {
@@ -40,5 +46,13 @@ public class Coffee {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Coffee{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
